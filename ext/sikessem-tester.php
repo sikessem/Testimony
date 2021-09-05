@@ -8,6 +8,14 @@ if(!function_exists('\SIKessEm\Tester\assert_that')) {
   }
 }
 
+if(!function_exists('\SIKessEm\Tester\test')) {
+
+  function test(string $file): Test {
+
+    return new Test($file);
+  }
+}
+
 if(!function_exists(('\SIKessEm\Tester\put_error'))) {
 
   function put_error(string $message, ...$args) {

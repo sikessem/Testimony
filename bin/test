@@ -5,6 +5,7 @@ use function SIKessEm\{
   Tester\send_error,
   Tester\send_exception,
   Tester\assert_that,
+  Tester\test,
   ArrayConfig\loader
 };
 
@@ -34,11 +35,7 @@ try {
 
             if(fnmatch($file, $dir_file)) {
 
-              $test_file = $dir . DIRECTORY_SEPARATOR . $dir_file;
-              (function() use($test_file) {
-
-                require $test_file;
-              })();
+              test($dir . DIRECTORY_SEPARATOR . $dir_file)->run();
               break;
             }
           }
