@@ -1,10 +1,9 @@
 <?php namespace SIKessEm\Tester;
 
-class SingleValueAssertion extends Assertion {
+class SingleValue {
 
   public function __construct(mixed $value) {
 
-    parent::__construct();
     $this->value = $value;
   }
 
