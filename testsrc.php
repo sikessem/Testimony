@@ -1,5 +1,5 @@
 <?php return [
 
-  'tests-dirs' => dirname(__DIR__) . '/lib',
-  'tests-files' => '*.test.php',
+  'dirs' => __DIR__ . '/lib',
+  'files' => '*.test.php',
 ];
