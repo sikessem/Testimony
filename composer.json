@@ -1,0 +1,40 @@
+{
+    "name": "sikessem/tester",
+    "type": "library",
+    "description": "PHP source code tester",
+    "license": "Apache-2.0",
+    "keywords": [
+        "tester",
+        "sikessem",
+        "php"
+    ],
+    "authors": [{
+        "homepage": "https://sikessem.com/",
+        "name": "SIGUI Kessé Emmanuel",
+        "email": "contact@sikessem.com",
+        "role": "Developer"
+    }],
+    "support": {
+        "source": "https://github.com/SIKessEm/tester.php",
+        "issues": "https://github.com/SIKessEm/tester.php/issues"
+    },
+    "require": {
+        "php": ">=8.0"
+    },
+    "autoload": {
+        "files": [
+            "ext/sikessem-tester.php"
+        ],
+        "psr-4": {
+          "SIKessEm\\Tester\\": "lib/"
+        }
+    },
+    "homepage": "https://github.com/SIKessEm/tester.php#readme",
+    "config": {
+        "vendor-dir": "pkg",
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
