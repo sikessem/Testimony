@@ -24,3 +24,11 @@ if(!function_exists(('\SIKessEm\Tester\send_error'))) {
     exit(1);
   }
 }
+
+if(!function_exists(('\SIKessEm\Tester\send_exception'))) {
+
+  function send_exception(\Throwable $e) {
+
+    put_error($e->getMessage());
+  }
+}
