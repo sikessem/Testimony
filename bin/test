@@ -1,4 +1,53 @@
-#!/bin/php
-<?php
+#!/usr/bin/env php
+<?php declare(strict_types=1);
+
+use function SIKessEm\{
+  Tester\send_error,
+  Tester\send_exception,
+  Tester\assert_that,
+  ArrayConfig\loader
+};
+
+if(php_sapi_name() !== 'cli') {
+  
+  send_error('Please run '. __FILE__ .' from CLI');
+}
 
 require_once dirname(__DIR__) . '/pkg/autoload.php';
+
+try {
+
+  $testsrc = loader(getcwd())?->load('testsrc');
+  $dirs = (array) $testsrc->dirs;
+  $files = (array) $testsrc->files;
+
+  foreach($dirs as $dir) {
+
+    if(is_dir($dir)) {
+
+      $dir_files = scandir($dir);
+      foreach($dir_files as $dir_file) {
+
+        if(!in_array($dir_file, ['.', '..'])) {
+
+          foreach($files as $file) {
+
+            if(fnmatch($file, $dir_file)) {
+
+              $test_file = $dir . DIRECTORY_SEPARATOR . $dir_file;
+              (function() use($test_file) {
+
+                require $test_file;
+              })();
+              break;
+            }
+          }
+        }
+
+      }
+    }
+  }
+} catch(\Throwable $e) {
+
+  send_exception($e);
+}
