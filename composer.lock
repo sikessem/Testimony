@@ -4,12 +4,67 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b480fa2c0dcd17b9eb1786196eef5e31",
-    "packages": [],
+    "content-hash": "02c8b25407f0f63a0cd92ae78cc41a7b",
+    "packages": [
+        {
+            "name": "sikessem/array-config",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SIKessEm/ArrayConfig.php.git",
+                "reference": "2a3b9268f02a74a270630b692337b03891bb4cb3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SIKessEm/ArrayConfig.php/zipball/2a3b9268f02a74a270630b692337b03891bb4cb3",
+                "reference": "2a3b9268f02a74a270630b692337b03891bb4cb3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "ext/sikessem-array_config.php"
+                ],
+                "psr-4": {
+                    "SIKessEm\\ArrayConfig\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "SIGUI Kessé Emmanuel",
+                    "email": "contact@sikessem.com",
+                    "homepage": "https://sikessem.com/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP configuration with arrays",
+            "homepage": "https://github.com/SIKessEm/ArrayConfig.php#readme",
+            "keywords": [
+                "array-config",
+                "php",
+                "sikessem"
+            ],
+            "support": {
+                "issues": "https://github.com/SIKessEm/ArrayConfig.php/issues",
+                "source": "https://github.com/SIKessEm/ArrayConfig.php"
+            },
+            "time": "2021-09-05T18:27:47+00:00"
+        }
+    ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "sikessem/array-config": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

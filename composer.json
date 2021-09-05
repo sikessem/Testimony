@@ -19,7 +19,8 @@
         "issues": "https://github.com/SIKessEm/tester.php/issues"
     },
     "require": {
-        "php": ">=8.0"
+        "php": ">=8.0",
+        "sikessem/array-config": "dev-main"
     },
     "autoload": {
         "files": [
