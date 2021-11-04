@@ -1,50 +1,63 @@
 #!/usr/bin/env php
 <?php declare(strict_types=1);
 
-use function SIKessEm\{
-  Tester\send_error,
-  Tester\send_exception,
-  Tester\assert_that,
-  Tester\test,
-  ArrayConfig\loader
-};
+use function Testimony\testify;
 
-if(php_sapi_name() !== 'cli') {
-  
-  send_error('Please run '. __FILE__ .' from CLI');
-}
-
-require_once dirname(__DIR__) . '/pkg/autoload.php';
-
-try {
-
-  $testsrc = loader(getcwd())?->load('testsrc');
-  $dirs = (array) $testsrc->dirs;
-  $files = (array) $testsrc->files;
-
-  foreach($dirs as $dir) {
-
-    if(is_dir($dir)) {
-
-      $dir_files = scandir($dir);
-      foreach($dir_files as $dir_file) {
-
-        if(!in_array($dir_file, ['.', '..'])) {
-
-          foreach($files as $file) {
-
-            if(fnmatch($file, $dir_file)) {
-
-              test($dir . DIRECTORY_SEPARATOR . $dir_file)->run();
-              break;
-            }
-          }
-        }
-
-      }
+foreach ([
+  dirname(__DIR__, 3) . DIRECTORY_SEPARATOR . 'composer.json',
+  dirname(__DIR__) . DIRECTORY_SEPARATOR . 'composer.json'
+] as $config_file) {
+    if (is_file($config_file)) {
+        define('TESTIMONY_ROOT', dirname($config_file) . DIRECTORY_SEPARATOR);
+        break;
     }
-  }
-} catch(\Throwable $e) {
-
-  send_exception($e);
 }
+unset($config_file);
+
+if (!defined('TESTIMONY_ROOT')) {
+    fwrite(
+        STDERR,
+        'You need to set up the project dependencies using Composer:' . PHP_EOL . PHP_EOL .
+        '    composer install' . PHP_EOL . PHP_EOL .
+        'You can add the Testimony dependency correctly with:' . PHP_EOL . PHP_EOL .
+        '    composer require testimony/testify' . PHP_EOL . PHP_EOL .
+        'You can learn all about Composer on https://getcomposer.org/.' . PHP_EOL
+    );
+    exit(1);
+}
+
+define('COMPOSER_FILE', TESTIMONY_ROOT . 'composer.json');
+
+if(!in_array(php_sapi_name(), ['cli', 'phpdbg'])) {
+  fprintf(
+    STDERR,
+    'Please run %s from CLI' . PHP_EOL,
+    __FILE__
+  );
+  exit(1);
+}
+
+$composer_data = json_decode(file_get_contents(COMPOSER_FILE), true);
+if (json_last_error()) {
+  fprintf(
+    STDERR,
+    json_last_error_msg() . ' in %s' . PHP_EOL,
+    COMPOSER_FILE
+  );
+  exit(1);
+}
+
+$autoload_file = TESTIMONY_ROOT . str_replace(['/', '\\'], DIRECTORY_SEPARATOR, $composer_data['config']['vendor-dir'] ?? 'vendor') . DIRECTORY_SEPARATOR . 'autoload.php';
+if(!is_file($autoload_file)) {
+  fprintf(
+    STDERR,
+    'You must set the autoload file at %s' . PHP_EOL,
+    $autoload_file
+  );
+  exit(1);
+}
+
+require_once $autoload_file;
+unset($composer_data, $autoload_file);
+
+testify($argc, $argv);

@@ -1,4 +1,6 @@
-<?php namespace SIKessEm\Tester;
+<?php declare(strict_types=1);
+
+namespace Testimony;
 
 class SeveralValues {
 

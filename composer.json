@@ -1,41 +1,46 @@
 {
-    "name": "sikessem/tester",
-    "type": "library",
-    "description": "PHP source code tester",
+    "name": "testimony/testify",
+    "description": "A flexible framework that allows you to test pieces of PHP code or program from a CLI",
     "license": "Apache-2.0",
     "keywords": [
-        "tester",
+        "testimony",
+        "testify",
+        "framework",
         "sikessem",
+        "tester",
+        "test",
+        "cli",
         "php"
     ],
     "authors": [{
-        "homepage": "https://sikessem.com/",
+        "homepage": "https://foss.sikessem.com",
         "name": "SIGUI Kessé Emmanuel",
-        "email": "contact@sikessem.com",
+        "email": "developer@sikessem.com",
         "role": "Developer"
     }],
     "support": {
-        "source": "https://github.com/SIKessEm/tester.php",
-        "issues": "https://github.com/SIKessEm/tester.php/issues"
+        "source": "https://github.com/SIKessEm/Testimony",
+        "issues": "https://github.com/SIKessEm/Testimony/issues"
     },
     "require": {
         "php": ">=8.0",
-        "sikessem/array-config": "dev-main"
+        "ext-json": "*"
     },
     "autoload": {
         "files": [
-            "ext/sikessem-tester.php"
+            "ext/testimony.php"
         ],
         "psr-4": {
-          "SIKessEm\\Tester\\": "lib/"
+          "Testimony\\": "src/main/"
         }
     },
-    "homepage": "https://github.com/SIKessEm/tester.php#readme",
+    "homepage": "https://github.com/SIKessEm/Testimony#readme",
     "config": {
         "vendor-dir": "pkg",
         "preferred-install": "dist",
         "sort-packages": true
     },
+    "bin": "cli/testify",
     "minimum-stability": "dev",
     "prefer-stable": true
 }

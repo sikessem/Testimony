@@ -1,0 +1,4 @@
+{
+  "dirs": "src/test",
+  "files": "*.test.php"
+}

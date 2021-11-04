@@ -1,6 +1,8 @@
-<?php namespace SIKessEm\Tester;
+<?php declare(strict_types=1);
 
-class Test {
+namespace Testimony;
+
+class Tester {
   
   public function __construct(string $file) {
 
@@ -15,7 +17,7 @@ class Test {
 
   protected string $file;
 
-  public function run(): void {
+  public function test(): void {
 
     require $this->file;
   }
