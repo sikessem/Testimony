@@ -4,7 +4,7 @@
 use function Testimony\testify;
 
 foreach ([
-  dirname(__DIR__, 3) . DIRECTORY_SEPARATOR . 'composer.json',
+  dirname(__DIR__, 4) . DIRECTORY_SEPARATOR . 'composer.json',
   dirname(__DIR__) . DIRECTORY_SEPARATOR . 'composer.json'
 ] as $config_file) {
     if (is_file($config_file)) {
