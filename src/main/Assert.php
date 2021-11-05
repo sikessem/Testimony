@@ -4,18 +4,15 @@ namespace Testimony;
 
 class Assert {
 
-  public static function that(mixed $value, mixed ...$values): SingleValue|SeveralValues {
-
-    return empty($values)? self::singleValue($value): self::severalValues($value, ...$values); 
+  public static function that(mixed $statement, mixed ...$statements): SingleStatement|SeveralStatements {
+    return empty($statements)? self::singleStatement($statement): self::severalStatements($statement, ...$statements); 
   }
 
-  public static function singleValue(mixed $value): SingleValue {
-
-    return new SingleValue($value);
+  protected static function singleStatement(mixed $statement): SingleStatement {
+    return new SingleStatement($statement);
   }
 
-  public static function severalValues(mixed ... $values): SeveralValues {
-
-    return new SeveralValues(...$values);
+  protected static function severalStatements(mixed ... $statements): SeveralStatements {
+    return new SeveralStatements(...$statements);
   }
 }
