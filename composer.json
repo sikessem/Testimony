@@ -1,5 +1,5 @@
 {
-    "name": "testimony/testify",
+    "name": "sikessem/testimony",
     "description": "A flexible framework that allows you to test pieces of PHP code or program from a CLI",
     "license": "Apache-2.0",
     "keywords": [
@@ -31,7 +31,7 @@
             "ext/testimony.php"
         ],
         "psr-4": {
-          "Testimony\\": "src/main/"
+          "SIKessEm\\Testimony\\": "src/main/"
         }
     },
     "homepage": "https://github.com/SIKessEm/Testimony#readme",

@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php declare(strict_types=1);
 
-use function Testimony\testify;
+use function SIKessEm\Testimony\testify;
 
 foreach ([
   dirname(__DIR__, 4) . DIRECTORY_SEPARATOR . 'composer.json',

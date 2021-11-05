@@ -1,6 +1,6 @@
 <?php 
 
-namespace Testimony;
+namespace SIKessEm\Testimony;
 
 class Program {
     public static function execute(int $argc, array $argv): void {

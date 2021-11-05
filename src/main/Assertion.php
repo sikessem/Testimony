@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Testimony;
+namespace SIKessEm\Testimony;
 
 abstract class Assertion {
 
